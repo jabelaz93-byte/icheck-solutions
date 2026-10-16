@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * iCheck Design System tokens.
+ * Source of truth: the "iCheck Design System" artifact (tokens.json).
+ * Text is only ink (#111111) or white. Color lives in art, tags, chips and rules.
+ */
+@theme {
+  /* Grounds */
+  --color-paper: #fbfaf8;
+  --color-sand: #f5efe7;
+  --color-ink: #111111;
+  --color-navy: #0a1f4d;
+  --color-navy-deep: #060d24;
+
+  /* Brand blues */
+  --color-blue-700: #0d3a9e;
+  --color-blue-600: #1450c8;
+  --color-blue-400: #2f8cf0;
+  --color-blue-200: #9cd2fa;
+  --color-blue-100: #eef2f8;
+  --color-highlight: #cfe1ff;
+
+  /* Art tones (artwork only, never behind small text) */
+  --color-teal-700: #0b6f78;
+  --color-teal-300: #2bd4c4;
+  --color-violet: #7a5fd8;
+  --color-orange: #f3a64b;
+  --color-coral: #c94a2c;
+  --color-pink: #ec6fae;
+  --color-gold: #ffd27a;
+  --color-cream: #fff4e6;
+
+  /* Patient statuses (white text passes 4.5:1 on each) */
+  --color-status-eligible: #18774f;
+  --color-status-new-plan: #1450c8;
+  --color-status-not-eligible: #b4462a;
+  --color-status-action: #8a5a0a;
+  --color-status-insufficient: #5b4a9e;
+  --color-status-none: #4a5565;
+
+  /* Lines */
+  --color-line: #e3e9f2;
+  --color-rule: rgb(17 17 17 / 0.12);
+  --color-rule-strong: rgb(17 17 17 / 0.2);
+
+  /* Type (variables come from next/font in app/layout.tsx) */
+  --font-display: var(--font-sora), "DM Sans", system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+
+  /* Radii */
+  --radius-chip: 6px;
+  --radius-btn: 8px;
+  --radius-card: 14px;
+  --radius-feature: 20px;
+
+  /* Shadows */
+  --shadow-float: 0 30px 80px rgb(10 31 77 / 0.28);
+  --shadow-warm: 0 24px 60px rgb(120 50 20 / 0.25);
+  --shadow-soft: 0 10px 30px rgb(40 90 170 / 0.12);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Page column: full width (minus gutters) on small screens, 80% of the screen from 1024px up. */
+@utility max-w-page {
+  max-width: 100%;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @media (width >= 64rem) {
+    max-width: 80vw;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-blue-400);
+    outline-offset: 2px;
+  }
 }
